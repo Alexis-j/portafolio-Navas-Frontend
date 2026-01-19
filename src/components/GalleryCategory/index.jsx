@@ -14,13 +14,13 @@ import {
   GalleryWrapper,
   Lightbox,
   LightboxImage,
-  PageTitle,
 } from "./styles";
 import { CloseIcon, CollapseIcon, ExpandIcon } from "../../components/ui/icons";
 import { EffectFade, Keyboard, Navigation, Pagination } from "swiper/modules";
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import Title from "../ui/Title";
 import api from "../../services/api";
 import { getImageUrl } from "../../utils/getImageUrl";
 import { useParams } from "react-router-dom";
@@ -110,7 +110,7 @@ function CategoryPage() {
 
   return (
     <>
-      <PageTitle>{slug}</PageTitle>
+      <Title>{slug}</Title>
 
       <GalleryWrapper>
         {blocks.map((block, bIndex) => (
