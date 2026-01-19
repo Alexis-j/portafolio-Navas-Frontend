@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 export const ContactWrapper = styled.section`
   display: flex;
-  align-items: flex-start;
+  align-items: stretch; /* Estira ambos lados a la misma altura */
   padding-top: 2rem;
-
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
   transition: all 0.3s ease;
@@ -21,13 +20,18 @@ export const ContactWrapper = styled.section`
 
 export const LeftSide = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra verticalmente el contenido */
 `;
 
 export const RightSide = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center; /* centra la foto */
 `;
+
 
 export const ContactTitle = styled.h2`
   color: ${({ theme }) => theme.colors.primary};
@@ -91,9 +95,9 @@ export const AltContact = styled.p`
 export const Photo = styled.img`
   width: 100%;
   max-width: 380px;
+  height: 100%;
   object-fit: cover;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  border-radius: ${({ theme }) => theme.borderRadius};
 `;
 
 export const Input = styled.input`
