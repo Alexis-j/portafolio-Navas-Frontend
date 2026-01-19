@@ -43,9 +43,7 @@ export const Description = styled.p`
 export const Photo = styled.img`
   width: 100%;
   max-width: 380px;
-  border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   border-radius: ${({ theme }) => theme.borderRadius};
-
 `;

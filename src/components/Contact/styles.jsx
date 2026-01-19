@@ -70,13 +70,11 @@ export const Select = styled.select`
 `;
 
 
-
-
 export const Button = styled.button`
   padding: ${({ theme }) => theme.spacing(2)};
   font-size: ${({ theme }) => theme.fontSizes.md};
   color: #fff;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.sendButton};
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius};
   cursor: pointer;
@@ -87,7 +85,7 @@ export const Button = styled.button`
   }
 `;
 
-export const AltContact = styled.p`
+export const AltContact = styled.a`
   margin-top: ${({ theme }) => theme.spacing(3)};
   font-size: ${({ theme }) => theme.fontSizes.sm};
   color: ${({ theme }) => theme.colors.text};

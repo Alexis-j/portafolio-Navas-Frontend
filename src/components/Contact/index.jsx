@@ -31,7 +31,7 @@ function Contact() {
   const [about, setAbout] = useState(null);
   const theme = useTheme();
 
-  // Traer la info de About para mostrar la imagen
+  // Fetch About info to show image
   useEffect(() => {
     const fetchAbout = async () => {
       try {
@@ -39,7 +39,7 @@ function Contact() {
         const data = Array.isArray(res.data) ? res.data[0] : res.data;
         setAbout(data);
       } catch (err) {
-        console.error("Error al cargar About:", err);
+        console.error("Error loading About:", err);
       }
     };
     fetchAbout();
@@ -55,7 +55,7 @@ function Contact() {
       const res = await api.post("/contact", form);
 
       if (res.status === 200) {
-        alert("Mensaje enviado correctamente");
+        alert("Message sent successfully");
         setForm({
           name: "",
           email: "",
@@ -64,15 +64,15 @@ function Contact() {
           message: "",
         });
       } else {
-        alert("Error al enviar el mensaje");
+        alert("Error sending the message");
       }
     } catch (err) {
-      console.error("Error al enviar:", err);
-      alert("Error al enviar el mensaje");
+      console.error("Error sending:", err);
+      alert("Error sending the message");
     }
   };
 
-  if (!about) return <p>Cargando...</p>;
+  if (!about) return <p>Loading...</p>;
 
   const imgSrc =
     theme.colors.background === "#2c2c2c"
@@ -81,74 +81,75 @@ function Contact() {
 
   return (
     <>
-          <Title>Contact</Title>
-    <ContactWrapper>
+      <Title>Contact</Title>
+      <ContactWrapper>
 
-      <LeftSide>
-        <ContactTitle>¿Tienes una idea en mente?</ContactTitle>
-        <ContactDescription>
-          Cuéntame los detalles y me pondré en contacto contigo.
-        </ContactDescription>
+        <LeftSide>
+          <ContactTitle>Do you have an idea in mind?</ContactTitle>
+          <ContactDescription>
+            Tell me the details and I will get in touch with you.
+          </ContactDescription>
 
-        <Form onSubmit={handleSubmit}>
-          <Input
-            name="name"
-            placeholder="Nombre"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
-          <Input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-          <Input
-            type="tel"
-            name="phone"
-            placeholder="Teléfono (opcional)"
-            value={form.phone}
-            onChange={handleChange}
-          />
+          <Form onSubmit={handleSubmit}>
+            <Input
+              name="name"
+              placeholder="Name"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              type="tel"
+              name="phone"
+              placeholder="Phone (optional)"
+              value={form.phone}
+              onChange={handleChange}
+            />
 
-          <Select
-            name="sessionType"
-            value={form.sessionType}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Tipo de sesión</option>
-            <option value="Boda">Boda</option>
-            <option value="Retrato">Retrato</option>
-            <option value="Evento">Evento</option>
-            <option value="Comercial">Comercial</option>
-            <option value="Otro">Otro</option>
-          </Select>
+            <Select
+              name="sessionType"
+              value={form.sessionType}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Session type</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Portrait">Portrait</option>
+              <option value="Event">Event</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Other">Other</option>
+            </Select>
 
-          <TextArea
-            name="message"
-            placeholder="Mensaje"
-            value={form.message}
-            onChange={handleChange}
-            required
-          />
+            <TextArea
+              name="message"
+              placeholder="Message"
+              value={form.message}
+              onChange={handleChange}
+              required
+            />
 
-          <Button type="submit">Enviar mensaje</Button>
-        </Form>
+            <Button type="submit">Send Message</Button>
+          </Form>
 
-        <AltContact>
-          O escríbeme directamente a <strong>contacto@fotografo.com</strong>
-        </AltContact>
-      </LeftSide>
+          <AltContact  href="mailto:andreynavas11@gmail.com">
+            Or write directly to <strong>andreynavas11@gmail.com</strong>
+          </AltContact>
+        </LeftSide>
 
-      <RightSide>
-        <Photo src={imgSrc} alt="Contacto" />
-      </RightSide>
-    </ContactWrapper>
-</>
+        <RightSide>
+          <Photo src={imgSrc} alt="Contact" />
+        </RightSide>
+
+      </ContactWrapper>
+    </>
   );
 }
 

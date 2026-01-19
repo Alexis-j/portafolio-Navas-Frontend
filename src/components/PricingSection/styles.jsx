@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   gap: 32px;
   align-items: center;
   padding: 64px 16px;
+
 `;
 
 
@@ -17,6 +18,7 @@ export const CategoryCard = styled.div`
   max-width: 1300px;
   min-height: 380px;
   justify-content: center;
+
 
   @media (max-width: 768px) {
     flex-direction: column; // móvil: columna
@@ -34,6 +36,7 @@ export const PhotoWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
+
   @media (max-width: 768px) {
     width: 100%;
     height: 300px;
@@ -46,6 +49,7 @@ export const CategoryPhoto = styled.img`
   object-fit: cover;
   object-position: center;
   transition: transform 0.3s;
+  border:none;
 
   &:hover {
     transform: scale(1.05);
@@ -62,7 +66,6 @@ export const InfoBox = styled.div`
   flex-direction: column;
   justify-content: center;
   min-height: 190px;
-
 
 
   margin-left: -80px;
@@ -89,11 +92,12 @@ export const InfoBox = styled.div`
   }
 
   @media (max-width: 768px) {
-    /* En móvil, sin overlay, debajo de la foto */
     margin-left: 0;
     width: 100%;
     margin-top: 0;
     max-height: 150px;
     z-index: 1;
+    box-shadow: none;
+
   }
 `;
