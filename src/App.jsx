@@ -1,0 +1,106 @@
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import React, { useState } from 'react';
+import { darkTheme, lightTheme } from './styles/theme';
+
+import About from './components/About';
+import AboutForm from './pages/admin/AboutForm';
+import AddAdminForm from './pages/admin/AddAdminForm';
+import CategoryPhotosEditor from './pages/admin/GalleryForm/CategoryPhotosEditor';
+import Contacto from './components/Contact';
+import Dashboard from './pages/admin/Dashboard';
+import ForgotPassword from "./pages/admin/ForgotPassword";
+import GalleryCategories from './components/GalleryCategories';
+import GalleryCategory from './components/GalleryCategory';
+import GalleryForm from './pages/admin/GalleryForm';
+import GalleryList from './pages/admin/GalleryForm/GalleryList';
+import GlobalStyle from './styles/GlobalStyles';
+import Hero from './components/Hero';
+import HeroForm from './pages/admin/HeroForm';
+import Login from './pages/admin/Login';
+import Price from './components/Prices';
+import ProtectedRoute from './pages/admin/ProtectedRoute';
+import PublicLayout from './components/PublicLayout';
+import ResetPassword from "./pages/admin/ResetPassword";
+import ReviewsForm from './pages/admin/ReviewsForm';
+import ReviewsList from './pages/admin/ReviewsForm/ReviewList';
+import { ThemeProvider } from 'styled-components';
+import ToggleThemeButton from './components/ui/ThemeToggle';
+
+function App() {
+  const [isDark, setIsDark] = useState(true);
+  const toggleTheme = () => setIsDark(prev => !prev);
+
+  return (
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <BrowserRouter>
+        <GlobalStyle />
+        <ToggleThemeButton toggleTheme={toggleTheme} isDark={isDark} />
+
+        <Routes>
+          {/* 1️⃣ Ruta pública */}
+          <Route path="/" element={
+            <PublicLayout>
+              <Hero />
+              <About />
+            </PublicLayout>
+          } />
+          <Route path="/contact" element={
+            <PublicLayout>
+              <Contacto />
+            </PublicLayout>
+          } />
+
+          <Route path="/price" element={
+            <PublicLayout>
+              <Price />
+            </PublicLayout>
+          } />
+
+          <Route path="/gallery" element={
+            <PublicLayout>
+              <GalleryCategories />
+            </PublicLayout>
+          } />
+
+          <Route path="/gallery/:slug" element={
+            <PublicLayout>
+              <GalleryCategory />
+            </PublicLayout>
+          } />
+          {/* 2️⃣ Redirección /admin a /admin/dashboard */}
+          <Route
+            path="/admin"
+            element={<Navigate to="/admin/dashboard" replace />}
+          />
+
+          {/* 3️⃣ Login admin */}
+          <Route path="/admin/login" element={<Login />} />
+          <Route path="/admin/forgot-password" element={<ForgotPassword />} />
+          <Route path="/admin/reset-password/:token" element={<ResetPassword />} />
+
+          {/* 4️⃣ Dashboard protegido con sub-rutas */}
+          <Route
+            path="/admin/dashboard/*"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="hero" element={<HeroForm />} />
+            <Route path="about" element={<AboutForm />} />
+            <Route path="reviews" element={<ReviewsList />} />
+            <Route path="reviews/new" element={<ReviewsForm />} />
+            <Route path="reviews/:id" element={<ReviewsForm />} />
+            <Route path="gallery" element={<GalleryList />} />
+            <Route path="gallery/new" element={<GalleryForm />} />
+            <Route path="gallery/:categoryId" element={<CategoryPhotosEditor />} />
+            <Route path="admins" element={<AddAdminForm />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+  );
+}
+
+export default App;

@@ -1,0 +1,154 @@
+import {
+  CloseWrapper,
+  FormWrapper,
+  Input,
+  Label,
+  PreviewImage,
+  PreviewImageVertical,
+  TextArea,
+} from "../../../components/FormStyles/FormStyles";
+import React, { useEffect, useState } from "react";
+
+import Button from "../../../components/ui/Button";
+import TooltipWithText from "../../../components/TooltipWithText";
+import { X } from "lucide-react";
+import api from "../../../services/api";
+import { getImageUrl } from "../../../utils/getImageUrl";
+import { useNavigate } from "react-router-dom";
+
+function AboutForm() {
+  // 🔹 Estado inicial con objeto vacío para manejar tabla vacía
+  const [about, setAbout] = useState({
+    titulo: "",
+    descripcion: "",
+    imagen_light: "",
+    imagen_dark: "",
+  });
+
+  const [titulo, setTitulo] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+
+  const [imagenLight, setImagenLight] = useState(null);
+  const [imagenLightPreview, setImagenLightPreview] = useState(null);
+
+  const [imagenDark, setImagenDark] = useState(null);
+  const [imagenDarkPreview, setImagenDarkPreview] = useState(null);
+
+  const navigate = useNavigate();
+
+  // 📌 Obtener About al cargar
+  useEffect(() => {
+    const fetchAbout = async () => {
+      try {
+        const res = await api.get("/about");
+        if (res.data) {
+          setAbout(res.data);
+          setTitulo(res.data.titulo || "");
+          setDescripcion(res.data.descripcion || "");
+        }
+      } catch (err) {
+        console.error("Error al cargar About:", err);
+      }
+    };
+    fetchAbout();
+  }, []);
+
+  // 📌 Previsualización de imágenes
+  const handleFileChange = (e, setFile, setPreview) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFile(file);
+      setPreview(URL.createObjectURL(file));
+    }
+  };
+
+  // 📌 Guardar cambios
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("titulo", titulo);
+    formData.append("descripcion", descripcion);
+    if (imagenLight) formData.append("imagen_light", imagenLight);
+    if (imagenDark) formData.append("imagen_dark", imagenDark);
+
+    try {
+      await api.put("/about", formData, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+
+      alert("About actualizado con éxito");
+      navigate("/");
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Error al actualizar");
+    }
+  };
+
+  // 📌 Cerrar
+  const handleClose = () => navigate("/");
+
+  return (
+    <FormWrapper onSubmit={handleSubmit}>
+      {/* Botón cerrar */}
+      <CloseWrapper>
+        <TooltipWithText text="Al cerrar serás redirigido al landing sin guardar.">
+          <Button variant="ghost" type="button" onClick={handleClose}>
+            <X size={20} />
+          </Button>
+        </TooltipWithText>
+      </CloseWrapper>
+
+      <h2>Editar About Me</h2>
+
+      <Label>Título</Label>
+      <Input
+        value={titulo}
+        onChange={(e) => setTitulo(e.target.value)}
+        required
+      />
+
+      <Label>Descripción</Label>
+      <TextArea
+        value={descripcion}
+        onChange={(e) => setDescripcion(e.target.value)}
+        required
+      />
+
+      {/* Imagen Light */}
+      <Label>Imagen Light</Label>
+      {imagenLightPreview ? (
+        <PreviewImage src={imagenLightPreview} />
+      ) : (
+        about.imagen_light && (
+          <PreviewImageVertical src={getImageUrl(about.imagen_light)} />
+        )
+      )}
+      <Input
+        type="file"
+        onChange={(e) => handleFileChange(e, setImagenLight, setImagenLightPreview)}
+      />
+
+      {/* Imagen Dark */}
+      <Label>Imagen Dark</Label>
+      {imagenDarkPreview ? (
+        <PreviewImageVertical src={imagenDarkPreview} />
+      ) : (
+        about.imagen_dark && (
+          <PreviewImageVertical src={getImageUrl(about.imagen_dark)} />
+        )
+      )}
+      <Input
+        type="file"
+        onChange={(e) => handleFileChange(e, setImagenDark, setImagenDarkPreview)}
+      />
+
+      <Button variant="login">Guardar cambios</Button>
+      <Button variant="cancel" type="button" onClick={handleClose}>
+        Cancelar
+      </Button>
+    </FormWrapper>
+  );
+}
+
+export default AboutForm;
