@@ -7,11 +7,6 @@ export const ReviewsWrapper = styled.section`
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
 
-  h1 {
-    text-align: center;
-
-  }
-
   /* Bullets */
   .swiper-pagination-bullet {
     background: ${({ theme }) => theme.colors.accent} !important;

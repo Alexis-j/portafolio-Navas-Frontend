@@ -21,7 +21,6 @@ export const CategoryCard = styled.div`
   background: url(${props => props.$image})
   background-size: cover;
   background-position: center;
-  border-radius: 8px;
   overflow: hidden;
 
   &::before {

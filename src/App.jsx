@@ -6,7 +6,8 @@ import About from './components/About';
 import AboutForm from './pages/admin/AboutForm';
 import AddAdminForm from './pages/admin/AddAdminForm';
 import CategoryPhotosEditor from './pages/admin/GalleryForm/CategoryPhotosEditor';
-import Contacto from './components/Contact';
+import CategoryPricing from './components/CategoryPricing';
+import Contact from './components/Contact';
 import Dashboard from './pages/admin/Dashboard';
 import ForgotPassword from "./pages/admin/ForgotPassword";
 import GalleryCategories from './components/GalleryCategories';
@@ -17,7 +18,7 @@ import GlobalStyle from './styles/GlobalStyles';
 import Hero from './components/Hero';
 import HeroForm from './pages/admin/HeroForm';
 import Login from './pages/admin/Login';
-import Price from './components/Prices';
+import Prices from './components/PricingSection';
 import ProtectedRoute from './pages/admin/ProtectedRoute';
 import PublicLayout from './components/PublicLayout';
 import ResetPassword from "./pages/admin/ResetPassword";
@@ -46,15 +47,18 @@ function App() {
           } />
           <Route path="/contact" element={
             <PublicLayout>
-              <Contacto />
+              <Contact />
             </PublicLayout>
           } />
 
-          <Route path="/price" element={
+          <Route path="/pricing" element={
             <PublicLayout>
-              <Price />
+              <Prices />
             </PublicLayout>
           } />
+          <Route path="/pricing/:category" element={
+            <CategoryPricing />
+            } />
 
           <Route path="/gallery" element={
             <PublicLayout>

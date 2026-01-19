@@ -1,0 +1,231 @@
+export const pricingData = [
+  {
+    id: "wedding-essential",
+    category: "wedding",
+    icon: "💍",
+    title: "Essential Wedding",
+    price: 900,
+    currency: "CHF",
+    description: "Family session or intimate couple photography",
+    features: [
+      "8 hours of coverage",
+      "Ceremony + couple session",
+      "High-resolution edited photos",
+      "Digital gallery (USB)",
+      "Delivery within 2 weeks"
+    ]
+  },
+  {
+    id: "wedding-complete",
+    category: "wedding",
+    icon: "💍",
+    title: "Complete Wedding",
+    price: 2500,
+    currency: "CHF",
+    features: [
+      "12 hours (2 days or full wedding coverage)",
+      "Preparations + ceremony + reception",
+      "1 pre-wedding or post-wedding session",
+      "300+ edited photos",
+      "USB gallery"
+    ],
+    note: "Each additional 30 minutes: CHF 50"
+  },
+  {
+    id: "wedding-premium",
+    category: "wedding",
+    icon: "💍",
+    title: "Premium Wedding",
+    price: 4500,
+    currency: "CHF",
+    highlight: true,
+    features: [
+      "24 hours of coverage",
+      "Full event + guests + details",
+      "Professional printed photo album",
+      "Pre-wedding session included",
+      "Priority delivery",
+      "Videographer included"
+    ]
+  },
+    {
+    id: "family-essential",
+    category: "family-session",
+    icon: "👨‍👩‍👧‍👦",
+    title: "Essential Family Session",
+    price: 900,
+    currency: "CHF",
+    description: "Family session",
+    features: [
+      "8 hours of coverage",
+      "Ceremony + family session",
+      "High-resolution edited photos",
+      "Digital gallery (USB)",
+      "Delivery within 2 weeks"
+    ]
+  },
+  {
+    id: "family-complete",
+    category: "family-session",
+    icon: "👨‍👩‍👧‍👦",
+    title: "Complete Family Session",
+    price: 2500,
+    currency: "CHF",
+    description: "Family session",
+    features: [
+      "12 hours of coverage",
+      "Preparations + ceremony + reception",
+      "1 pre-session or post-session",
+      "300+ edited photos",
+      "USB gallery"
+    ],
+    note: "Each additional 30 minutes: CHF 50"
+  },
+  {
+    id: "family-premium",
+    category: "family-session",
+    icon: "👨‍👩‍👧‍👦",
+    title: "Premium Family Session",
+    price: 4500,
+    currency: "CHF",
+    highlight: true,
+    description: "Family session",
+    features: [
+      "24 hours of coverage",
+      "Full event + guests + details",
+      "Professional printed photo album",
+      "Pre-session included",
+      "Priority delivery",
+      "Videographer included"
+    ]
+  },
+   {
+    id: "couple-essential",
+    category: "couple-session",
+    icon: "💑",
+    title: "Essential Couple Session",
+    price: 900,
+    currency: "CHF",
+    description: "Intimate / couple session",
+    features: [
+      "8 hours of coverage",
+      "Ceremony + couple session",
+      "High-resolution edited photos",
+      "Digital gallery (USB)",
+      "Delivery within 2 weeks"
+    ]
+  },
+  {
+    id: "couple-complete",
+    category: "couple-session",
+    icon: "💑",
+    title: "Complete Couple Session",
+    price: 2500,
+    currency: "CHF",
+    description: "Intimate / couple session",
+    features: [
+      "12 hours of coverage",
+      "Preparations + ceremony + reception",
+      "1 pre-session or post-session",
+      "300+ edited photos",
+      "USB gallery"
+    ],
+    note: "Each additional 30 minutes: CHF 50"
+  },
+  {
+    id: "couple-premium",
+    category: "couple-session",
+    icon: "💑",
+    title: "Premium Couple Session",
+    price: 4500,
+    currency: "CHF",
+    highlight: true,
+    description: "Intimate / couple session",
+    features: [
+      "24 hours of coverage",
+      "Full event + guests + details",
+      "Professional printed photo album",
+      "Pre-session included",
+      "Priority delivery",
+      "Videographer included"
+    ]
+  },
+    {
+    id: "brand-basic",
+    category: "brand",
+    icon: "📸",
+    title: "Brand basic",
+    price: 400,
+    currency: "CHF",
+    description: "Brand content",
+    features: [
+      "4 hours",
+      "20 edited photos",
+      "Social media usage",
+      "Delivery within 7 days"
+    ]
+  },
+  {
+    id: "brand-pro",
+    category: "brand",
+    icon: "📸",
+    title: "Brand Pro",
+    price: 850,
+    currency: "CHF",
+    description: "Professional brand content",
+    features: [
+      "8 hours",
+      "40 high-resolution edited photos",
+      "Commercial use included",
+      "1 social media Reel",
+      "Delivery within 7 days"
+    ]
+  },
+    {
+    id: "Colab-basic",
+    category: "Colab",
+    icon: "📸",
+    title: "Collaborations Basic",
+    price: 400,
+    currency: "CHF",
+    description: "Colab content",
+    features: [
+      "4 hours",
+      "20 edited photos",
+      "Social media usage",
+      "Delivery within 7 days"
+    ]
+  },
+  {
+    id: "Colab-pro",
+    category: "Colab",
+    icon: "📸",
+    title: "Content Pro",
+    price: 850,
+    currency: "CHF",
+    description: "Professional brand content",
+    features: [
+      "8 hours",
+      "40 high-resolution edited photos",
+      "Commercial use included",
+      "1 social media Reel",
+      "Delivery within 7 days"
+    ]
+  },
+  {
+  id: "Monthly-content",
+  category: "Monthly-content",
+  icon: "📸",
+  title: "Monthly Content",
+  price: 1200,
+  currency: "CHF",
+  description: "Professional content",
+  features: [
+    "16 hours per month",
+    "80+ edited photos",
+    "Ideal for creators, restaurants, brands",
+    "Priority delivery"
+  ]
+}
+
+];

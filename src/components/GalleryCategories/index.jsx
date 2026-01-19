@@ -2,6 +2,7 @@ import { CategoryCard, GalleryWrapper } from "./styles";
 import React, { useEffect, useState } from "react";
 
 import Button from "../ui/Button";
+import Title from "../ui/Title";
 import api from "../../services/api";
 import { getImageUrl } from "../../utils/getImageUrl";
 
@@ -31,7 +32,7 @@ function GalleryPage() {
 
   return (
     <GalleryWrapper>
-      <h1>Galería</h1>
+      <Title>Galería</Title>
       {categories.map((cat) => {
         const imageUrl = getImageUrl(cat.cover_image);
 

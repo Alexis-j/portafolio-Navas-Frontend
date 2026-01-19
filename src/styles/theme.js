@@ -28,6 +28,7 @@ const lightTheme = {
     lg: '1.75rem',  // 20px
     xl: '2rem',     // 32px
     xxl: '3rem',    // 48px
+    Title: '2.9rem',
   },
   spacing: (factor) => `${factor * 8}px`,
   borderRadius: '4px',
@@ -50,7 +51,7 @@ const darkTheme = {
   components: {
     reviews: {
       textBox: {
-        background: '#3a3a3a',  // 🔥 NO negro puro
+        background: '#3a3a3a',
         text: '#e0e0e0',
         name: '#ffffff',
         shadow: '0 6px 20px rgba(0,0,0,0.6)',

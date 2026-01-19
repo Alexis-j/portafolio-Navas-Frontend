@@ -18,6 +18,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import Title from "../ui/Title";
 import api from "../../services/api";
 import { getImageUrl } from "../../utils/getImageUrl";
 
@@ -48,7 +49,7 @@ function Reviews() {
 
   return (
     <ReviewsWrapper>
-      <h1>Reseñas de Clientes</h1>
+      <Title>Reviews</Title>
 
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}

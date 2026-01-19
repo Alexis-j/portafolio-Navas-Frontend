@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ContactWrapper = styled.section`
   display: flex;
   align-items: flex-start;
+  padding-top: 2rem;
 
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};

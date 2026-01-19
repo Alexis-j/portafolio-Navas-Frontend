@@ -14,6 +14,7 @@ import {
 } from "./styles";
 import React, { useEffect, useState } from "react";
 
+import Title from "../ui/Title"
 import api from "../../services/api";
 import { getImageUrl } from "../../utils/getImageUrl";
 import { useTheme } from "styled-components";
@@ -79,7 +80,10 @@ function Contact() {
       : getImageUrl(about.imagen_light);
 
   return (
+    <>
+          <Title>Contact</Title>
     <ContactWrapper>
+
       <LeftSide>
         <ContactTitle>¿Tienes una idea en mente?</ContactTitle>
         <ContactDescription>
@@ -144,7 +148,9 @@ function Contact() {
         <Photo src={imgSrc} alt="Contacto" />
       </RightSide>
     </ContactWrapper>
+</>
   );
 }
+
 
 export default Contact;
