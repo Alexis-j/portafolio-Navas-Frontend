@@ -15,7 +15,6 @@ function Hero() {
     const fetchHero = async () => {
       try {
         const data = await getSingle('/hero');
-        console.log("🟣 HERO DATA:", data);
         setHero(data);
       } catch (err) {
         console.error('Error loading hero:', err);
@@ -27,7 +26,6 @@ function Hero() {
 
   if (!hero) return <p>Loading...</p>;
 
-  console.log("🟣 hero.image_light:", hero.image_light);
 
   const imgSrc = theme.colors.background === '#2c2c2c'
     ? getImageUrl(hero.image_dark)

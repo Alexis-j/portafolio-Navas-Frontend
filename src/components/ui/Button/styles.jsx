@@ -80,6 +80,14 @@ export const StyledButton = styled.button`
             font-size: 24px;
             font-weight: 700;
           `;
+                case "send":
+        return css`
+          background-color: ${theme.colors.sendButton};
+          color: #fff;
+          &:hover {
+            background-color: ${theme.colors.secondary};
+          }
+        `;
     }
   }}
 

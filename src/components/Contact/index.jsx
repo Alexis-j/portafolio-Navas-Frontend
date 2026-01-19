@@ -1,6 +1,5 @@
 import {
   AltContact,
-  Button,
   ContactDescription,
   ContactTitle,
   ContactWrapper,
@@ -14,6 +13,7 @@ import {
 } from "./styles";
 import React, { useEffect, useState } from "react";
 
+import Button from "../ui/Button"
 import Title from "../ui/Title"
 import api from "../../services/api";
 import { getImageUrl } from "../../utils/getImageUrl";
@@ -136,7 +136,7 @@ function Contact() {
               required
             />
 
-            <Button type="submit">Send Message</Button>
+          <Button $variant="send">Send</Button>
           </Form>
 
           <AltContact  href="mailto:andreynavas11@gmail.com">

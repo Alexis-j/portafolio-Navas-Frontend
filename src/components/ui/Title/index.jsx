@@ -8,7 +8,10 @@ const Title = styled.h1`
   margin-bottom: ${({ theme }) => theme.spacing(2)};
   padding: 1rem;
 
-
+  @media (max-width: 768px) {
+    font-size: ${({ size, theme }) =>
+      size ? `calc(${size} * 0.7)` : `calc(${theme.fontSizes.Title} * 0.7)`};
+  }
 `;
 
 export default Title;

@@ -32,7 +32,7 @@ function GalleryPage() {
 
   return (
     <GalleryWrapper>
-      <Title>Galería</Title>
+      <Title>Gallery</Title>
       {categories.map((cat) => {
         const imageUrl = getImageUrl(cat.cover_image);
 
