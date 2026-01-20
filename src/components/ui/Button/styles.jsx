@@ -54,13 +54,6 @@ export const StyledButton = styled.button`
           margin: 1rem 0 2rem 0;
           max-width: 600px;
         `;
-
-      default:
-        return css`
-          background-color: ${theme.colors.primary};
-          color: ${theme.colors.background};
-        `;
-
         case "portfolio":
           return css`
             min-width: 150px;
@@ -80,14 +73,33 @@ export const StyledButton = styled.button`
             font-size: 24px;
             font-weight: 700;
           `;
-                case "send":
+        case "send":
         return css`
           background-color: ${theme.colors.sendButton};
           color: #fff;
+          transition: transform 0.3s ease;
+
           &:hover {
-            background-color: ${theme.colors.secondary};
+          transform: scale(1.05);
           }
         `;
+
+        case"more":
+        return css`
+        background-color: ${theme.colors.border};
+        color: ${theme.colors.background};
+        transition: transform 0.3s ease;
+
+        &:hover {
+        transform: scale(1.05);
+        }
+      `;
+
+        default:
+          return css`
+            background-color: ${theme.colors.primary};
+            color: ${theme.colors.background};
+          `;
     }
   }}
 

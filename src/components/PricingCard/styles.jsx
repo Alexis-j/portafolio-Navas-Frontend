@@ -4,10 +4,7 @@ export const Card = styled.div`
   background: #fff;
   padding: 32px 24px;
   text-align: center;
-  border: ${({ highlight }) =>
-    highlight ? "2px solid #000" : "1px solid #ddd"};
-  transform: ${({ highlight }) =>
-    highlight ? "scale(1.05)" : "none"};
+
 
   @media (max-width: 768px) {
     transform: none;

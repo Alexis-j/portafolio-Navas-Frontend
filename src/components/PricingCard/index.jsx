@@ -1,4 +1,6 @@
-import { Button, Card, CardTitle, Desc, Icon, List, Note, Price } from './styles';
+import { Card, CardTitle, Desc, Icon, List, Note, Price } from './styles';
+
+import Button from "../ui/Button";
 
 export default function PriceCard({ data }) {
   return (
@@ -21,7 +23,7 @@ export default function PriceCard({ data }) {
 
       {data.note && <Note>{data.note}</Note>}
 
-      <Button>Anfrage senden</Button>
+      <Button variant='sendButton' >Anfrage senden</Button>
     </Card>
   );
 }
