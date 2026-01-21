@@ -1,7 +1,7 @@
 export const pricingData = [
   {
     id: "wedding-essential",
-    category: "Wedding",
+    category: "wedding",
     icon: "💍",
     title: "Essential Wedding",
     price: 900,
@@ -17,7 +17,7 @@ export const pricingData = [
   },
   {
     id: "wedding-complete",
-    category: "Wedding",
+    category: "wedding",
     icon: "💍",
     title: "Complete Wedding",
     price: 2500,
@@ -33,7 +33,7 @@ export const pricingData = [
   },
   {
     id: "wedding-premium",
-    category: "Wedding",
+    category: "wedding",
     icon: "💍",
     title: "Premium Wedding",
     price: 4500,
@@ -50,7 +50,7 @@ export const pricingData = [
   },
     {
     id: "family-essential",
-    category: "Family-Session",
+    category: "family-Session",
     icon: "👨‍👩‍👧‍👦",
     title: "Essential Family Session",
     price: 900,
@@ -66,7 +66,7 @@ export const pricingData = [
   },
   {
     id: "family-complete",
-    category: "Family-Session",
+    category: "family-Session",
     icon: "👨‍👩‍👧‍👦",
     title: "Complete Family Session",
     price: 2500,
@@ -83,7 +83,7 @@ export const pricingData = [
   },
   {
     id: "family-premium",
-    category: "Family-Session",
+    category: "family-Session",
     icon: "👨‍👩‍👧‍👦",
     title: "Premium Family Session",
     price: 4500,
@@ -101,7 +101,7 @@ export const pricingData = [
   },
    {
     id: "couple-essential",
-    category: "Couple-Session",
+    category: "couple-Session",
     icon: "💑",
     title: "Essential Couple Session",
     price: 900,
@@ -117,7 +117,7 @@ export const pricingData = [
   },
   {
     id: "couple-complete",
-    category: "Couple-Session",
+    category: "couple-Session",
     icon: "💑",
     title: "Complete Couple Session",
     price: 2500,
@@ -134,7 +134,7 @@ export const pricingData = [
   },
   {
     id: "couple-premium",
-    category: "Couple-Session",
+    category: "couple-Session",
     icon: "💑",
     title: "Premium Couple Session",
     price: 4500,
@@ -152,7 +152,7 @@ export const pricingData = [
   },
     {
     id: "brand-basic",
-    category: "Brand",
+    category: "brand",
     icon: "📸",
     title: "Brand basic",
     price: 400,
@@ -167,7 +167,7 @@ export const pricingData = [
   },
   {
     id: "brand-pro",
-    category: "Brand",
+    category: "brand",
     icon: "📸",
     title: "Brand Pro",
     price: 850,
@@ -183,7 +183,7 @@ export const pricingData = [
   },
     {
     id: "Colab-basic",
-    category: "Colab",
+    category: "colab",
     icon: "📸",
     title: "Collaborations Basic",
     price: 400,
@@ -198,7 +198,7 @@ export const pricingData = [
   },
   {
     id: "Colab-pro",
-    category: "Colab",
+    category: "colab",
     icon: "📸",
     title: "Content Pro",
     price: 850,
@@ -214,7 +214,7 @@ export const pricingData = [
   },
   {
   id: "Monthly-content",
-  category: "Monthly-Content",
+  category: "monthly-Content",
   icon: "📸",
   title: "Monthly Content",
   price: 1200,
