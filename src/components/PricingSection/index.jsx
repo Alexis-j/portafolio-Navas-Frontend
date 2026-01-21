@@ -3,6 +3,7 @@ import { CategoryCard, CategoryPhoto, InfoBox, PhotoWrapper, Wrapper } from './s
 import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 import Title from "../ui/Title"
+import { categoryImages } from '../../Data/categoryImages';
 import { pricingData } from '../../Data/pricingData';
 
 export default function PricingSection() {
@@ -14,7 +15,10 @@ export default function PricingSection() {
   {categories.map(category => (
     <CategoryCard key={category}>
       <PhotoWrapper>
-        <CategoryPhoto src="/images/family-sessiong.jpeg" alt="Family Session" />
+        <CategoryPhoto
+          src={categoryImages[category] || "/images/default.jpeg"}
+          alt={category}
+        />
       </PhotoWrapper>
       <InfoBox>
         <h2>{category.replace("-", " ")}</h2>
