@@ -1,9 +1,9 @@
 // src/Data/categoryImages.js
 export const categoryImages = {
-  "Wedding": "/images/wedding.jpeg",
-  "Family-Session": "/images/family-session.jpeg",
-  "Couple-Session": "/images/couple-session.jpeg",
-  "Brand": "/images/brand.jpeg",
-  "Colab": "/images/colab.jpeg",
-  "Monthly-Content": "/images/monthly-content.jpeg",
+  "wedding": "/images/wedding.jpeg",
+  "family-Session": "/images/family-session.jpeg",
+  "couple-Session": "/images/couple-session.jpeg",
+  "brand": "/images/brand.jpeg",
+  "colab": "/images/colab.jpeg",
+  "monthly-Content": "/images/monthly-content.jpeg",
 };
