@@ -10,6 +10,8 @@ const lightTheme = {
     sendButton:'#222222',
     bulletsActives:'#2c2c2c',
     border: '#222222', // 👈 borde oscuro
+    priceCard:'#fff',
+    cardTittle:'#222222',
 
   },
     components: {
@@ -24,7 +26,8 @@ const lightTheme = {
   },
   fontSizes: {
     xs: '0.75rem',  // 12px
-    sm: '1.1rem', // 14px
+    xss:'0.9rem',
+    sm: '1.2rem', // 14px
     md: '1.35rem',     // 16px
     lg: '1.75rem',  // 20px
     xl: '2rem',     // 32px
@@ -47,6 +50,9 @@ const darkTheme = {
     loginButton:'#2c3e50',
     sendButton:'#626567',
     border: '#e0e0e0', // 👈 borde claro
+    priceCard:'#e0e0e0',
+    cardTittle:'#222222',
+
   },
 
   components: {

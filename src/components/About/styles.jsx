@@ -9,12 +9,16 @@ export const AboutWrapper = styled.section`
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
   transition: all 0.3s ease;
-  padding-left: 15%;
-  padding-right: 5.5%;
+
+  @media (min-width: 768px) {
+    padding-left: 15%;
+    padding-right: 5.5%;
+  }
 
   @media (max-width: 768px) {
     flex-direction: column-reverse;
     text-align: center;
+    padding:4rem;
   }
 `;
 
@@ -31,6 +35,9 @@ export const RightSide = styled.div`
 export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.primary};
   margin-bottom: ${({ theme }) => theme.spacing(2)};
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+
+
 
 `;
 

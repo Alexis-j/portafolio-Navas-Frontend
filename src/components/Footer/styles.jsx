@@ -68,6 +68,7 @@ export const FooterText = styled.p`
 `;
 
 export const FooterLink = styled.a`
+  font-size: ${({ theme }) => theme.fontSizes.sm};
   color: inherit;
   text-decoration: none;
   opacity: 0.8;

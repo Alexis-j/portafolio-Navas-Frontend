@@ -19,6 +19,7 @@ export const CategoryCard = styled.div`
     flex-direction: column;
     min-height: auto;
     width: 100%;
+    border: 1px solid ${({ theme }) => theme.colors.border}30;
   }
 `;
 
@@ -40,13 +41,12 @@ export const PhotoWrapper = styled.div`
 export const CategoryPhoto = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;           /* ocupa todo el espacio */
-  object-position: center;     /* centra la parte importante de la foto */
-  transform: scale(1.08);
+  object-fit: cover;
+  object-position: center;
   transition: transform 0.6s ease;
 
   ${PhotoWrapper}:hover & {
-    transform: scale(1);       /* efecto de "alejar" al hover */
+    transform: scale(1.08);
   }
 
   @media (max-width: 768px) {
@@ -67,7 +67,7 @@ export const InfoBox = styled.div`
   color: ${({ theme }) => theme.components.reviews.textBox.text};
   box-shadow: ${({ theme }) => theme.components.reviews.textBox.shadow};
 
-  margin-left: -80px; /* mantiene el InfoBox sobre la foto */
+  margin-left: -80px; 
   z-index: 2;
 
   h2 {

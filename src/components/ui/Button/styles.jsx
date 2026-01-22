@@ -95,6 +95,12 @@ export const StyledButton = styled.button`
         }
       `;
 
+      case "request":
+        return css`
+        background-color: #2c2c2c;
+        color: #fff;
+        `;
+
         default:
           return css`
             background-color: ${theme.colors.primary};

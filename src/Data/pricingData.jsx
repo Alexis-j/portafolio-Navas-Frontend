@@ -6,14 +6,14 @@ export const pricingData = [
     title: "Essential Wedding",
     price: 900,
     currency: "CHF",
-    description: "Family session or intimate couple photography",
     features: [
       "8 hours of coverage",
       "Ceremony + couple session",
       "High-resolution edited photos",
       "Digital gallery (USB)",
-      "Delivery within 2 weeks"
-    ]
+      "Delivery within 2 weeks",
+    ],
+    note: " ",
   },
   {
     id: "wedding-complete",
@@ -45,8 +45,8 @@ export const pricingData = [
       "Professional printed photo album",
       "Pre-wedding session included",
       "Priority delivery",
-      "Videographer included"
-    ]
+    ],
+    note: "Videographer included"
   },
     {
     id: "family-essential",

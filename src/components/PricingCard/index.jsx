@@ -4,8 +4,7 @@ import Button from "../ui/Button";
 
 export default function PriceCard({ data }) {
   return (
-    <Card highlight={data.highlight}>
-
+    <Card>
       <Icon>{data.icon}</Icon>
       <CardTitle>{data.title}</CardTitle>
 
@@ -23,7 +22,7 @@ export default function PriceCard({ data }) {
 
       {data.note && <Note>{data.note}</Note>}
 
-      <Button variant='sendButton' >Anfrage senden</Button>
+      <Button variant='request' >Anfrage senden</Button>
     </Card>
   );
 }

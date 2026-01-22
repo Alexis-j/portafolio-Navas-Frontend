@@ -8,6 +8,7 @@ import { pricingData } from '../../Data/pricingData';
 
 export default function PricingSection() {
   const categories = [...new Set(pricingData.map(pkg => pkg.category))];
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
   return (
     <Wrapper>
@@ -21,7 +22,7 @@ export default function PricingSection() {
         />
       </PhotoWrapper>
       <InfoBox>
-        <h2>{category.replace("-", " ")}</h2>
+        <h2>{capitalize(category.replace("-", " "))}</h2>
         <Button
           as={Link}
           to={`/pricing/${category}`}
