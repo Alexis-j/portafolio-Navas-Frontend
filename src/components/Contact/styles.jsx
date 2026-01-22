@@ -111,6 +111,7 @@ export const TextArea = styled.textarea`
   min-height: 80px;
   resize: none;
   transition: border-color 0.3s;
+  overflow:hidden;
 
   &:focus {
     outline: none;

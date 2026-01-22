@@ -25,10 +25,8 @@ import { useTheme } from "styled-components";
 function Contact() {
   const theme = useTheme();
   const { state } = useLocation();
-
-  // Extraer categorías únicas directamente desde pricingData
+  const [about, setAbout] = useState(null);
   const categoryOptions = Array.from(new Set(pricingData.map(pkg => pkg.category)));
-
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -36,15 +34,19 @@ function Contact() {
     sessionType: "",
     message: "",
   });
+  const handleTextAreaInput = (e) => {
+  setForm({ ...form, message: e.target.value });
 
-  const [about, setAbout] = useState(null);
+  e.target.style.height = "auto";
+  e.target.style.height = e.target.scrollHeight + "px";
+};
 
-  // Precargar datos desde Pricing si vienen por state
+
   useEffect(() => {
     if (state) {
       setForm(prev => ({
         ...prev,
-        sessionType: state.sessionType, // exactamente la categoría
+        sessionType: state.sessionType,
         message: buildContactMessage({
           packageTitle: state.packageTitle,
           price: state.price,
@@ -53,7 +55,6 @@ function Contact() {
     }
   }, [state]);
 
-  // Fetch About info para mostrar imagen
   useEffect(() => {
     const fetchAbout = async () => {
       try {
@@ -152,7 +153,7 @@ function Contact() {
               name="message"
               placeholder="Message"
               value={form.message}
-              onChange={handleChange}
+              onChange={handleTextAreaInput}
               required
             />
 
