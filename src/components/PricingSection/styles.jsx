@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
 export const CategoryCard = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
   max-width: 1300px;
   min-height: 380px;
   justify-content: center;
@@ -24,8 +23,8 @@ export const CategoryCard = styled.div`
 
 export const PhotoWrapper = styled.div`
   flex: 1;
-  width: 600px;
-  height: 500px;
+  width: 850px;
+  height: 600px;
   overflow: hidden;
   display: flex;
   justify-content: center;
