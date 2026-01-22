@@ -200,7 +200,7 @@ export const pricingData = [
     id: "Colab-pro",
     category: "colab",
     icon: "📸",
-    title: "Content Pro",
+    title: "Collaborations Pro",
     price: 850,
     currency: "CHF",
     description: "Professional brand content",

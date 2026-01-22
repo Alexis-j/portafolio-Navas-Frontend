@@ -57,7 +57,9 @@ function App() {
             </PublicLayout>
           } />
           <Route path="/pricing/:category" element={
+            <PublicLayout>
             <CategoryPricing />
+            </PublicLayout>
             } />
 
           <Route path="/gallery" element={

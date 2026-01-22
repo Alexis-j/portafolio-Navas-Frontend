@@ -1,6 +1,7 @@
 import { Card, CardTitle, Desc, Icon, List, Note, Price } from './styles';
 
 import Button from "../ui/Button";
+import { Link } from "react-router-dom";
 
 export default function PriceCard({ data }) {
   return (
@@ -21,8 +22,20 @@ export default function PriceCard({ data }) {
       </List>
 
       {data.note && <Note>{data.note}</Note>}
+      
+      <Button
+        as={Link}
+        to="/contact"
+        state={{
+          sessionType: data.category,   // wedding, family-Session, etc
+          packageTitle: data.title,
+          price: `${data.currency} ${data.price}`,
+        }}
+        variant="request"
+      >
+        Anfrage senden
+      </Button>
 
-      <Button variant='request' >Anfrage senden</Button>
     </Card>
   );
 }

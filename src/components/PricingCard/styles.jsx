@@ -14,7 +14,8 @@ export const Card = styled.div`
     min-height: auto;
     transform: none;
   }
-`;
+
+  `;
 
 export const Icon = styled.div`
   font-size: 28px;
@@ -54,3 +55,4 @@ export const Note = styled.p`
   font-size: 16px;
   color: ${({ theme }) => theme.colors.cardTittle};
 `;
+

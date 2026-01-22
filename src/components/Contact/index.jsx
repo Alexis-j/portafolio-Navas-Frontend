@@ -13,13 +13,22 @@ import {
 } from "./styles";
 import React, { useEffect, useState } from "react";
 
-import Button from "../ui/Button"
-import Title from "../ui/Title"
+import Button from "../ui/Button";
+import Title from "../ui/Title";
 import api from "../../services/api";
+import { buildContactMessage } from "../../utils/contactHelper";
 import { getImageUrl } from "../../utils/getImageUrl";
+import { pricingData } from "../../Data/pricingData";
+import { useLocation } from "react-router-dom";
 import { useTheme } from "styled-components";
 
 function Contact() {
+  const theme = useTheme();
+  const { state } = useLocation();
+
+  // Extraer categorías únicas directamente desde pricingData
+  const categoryOptions = Array.from(new Set(pricingData.map(pkg => pkg.category)));
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -29,9 +38,22 @@ function Contact() {
   });
 
   const [about, setAbout] = useState(null);
-  const theme = useTheme();
 
-  // Fetch About info to show image
+  // Precargar datos desde Pricing si vienen por state
+  useEffect(() => {
+    if (state) {
+      setForm(prev => ({
+        ...prev,
+        sessionType: state.sessionType, // exactamente la categoría
+        message: buildContactMessage({
+          packageTitle: state.packageTitle,
+          price: state.price,
+        }),
+      }));
+    }
+  }, [state]);
+
+  // Fetch About info para mostrar imagen
   useEffect(() => {
     const fetchAbout = async () => {
       try {
@@ -53,7 +75,6 @@ function Contact() {
     e.preventDefault();
     try {
       const res = await api.post("/contact", form);
-
       if (res.status === 200) {
         alert("Message sent successfully");
         setForm({
@@ -83,7 +104,6 @@ function Contact() {
     <>
       <Title>Contact</Title>
       <ContactWrapper>
-
         <LeftSide>
           <ContactTitle>Do you have an idea in mind?</ContactTitle>
           <ContactDescription>
@@ -121,11 +141,11 @@ function Contact() {
               required
             >
               <option value="">Session type</option>
-              <option value="Wedding">Wedding</option>
-              <option value="Portrait">Portrait</option>
-              <option value="Event">Event</option>
-              <option value="Commercial">Commercial</option>
-              <option value="Other">Other</option>
+              {categoryOptions.map(cat => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
             </Select>
 
             <TextArea
@@ -136,10 +156,10 @@ function Contact() {
               required
             />
 
-          <Button $variant="send">Send</Button>
+            <Button $variant="send">Send</Button>
           </Form>
 
-          <AltContact  href="mailto:andreynavas11@gmail.com">
+          <AltContact href="mailto:andreynavas11@gmail.com">
             Or write directly to <strong>andreynavas11@gmail.com</strong>
           </AltContact>
         </LeftSide>
@@ -147,7 +167,6 @@ function Contact() {
         <RightSide>
           <Photo src={imgSrc} alt="Contact" />
         </RightSide>
-
       </ContactWrapper>
     </>
   );
