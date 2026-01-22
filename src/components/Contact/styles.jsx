@@ -110,8 +110,8 @@ export const TextArea = styled.textarea`
   color: ${({ theme }) => theme.colors.text};
   min-height: 80px;
   resize: none;
+  overflow: hidden;
   transition: border-color 0.3s;
-  overflow:hidden;
 
   &:focus {
     outline: none;
