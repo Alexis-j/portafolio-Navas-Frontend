@@ -1,5 +1,20 @@
 import styled from 'styled-components';
 
+export const ImageRow = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border: 1px solid;
+`;
+
+export const FromColumn = styled.div`
+display: flex;
+flex-direction: column;
+gap: 1rem;
+`;
+
+
 /* ======================================================
    🔵 FORMULARIO PRINCIPAL
 ====================================================== */
@@ -152,5 +167,3 @@ export const ReviewsListContainer = styled.div`
 
   margin-top: 1rem;
 `;
-
-

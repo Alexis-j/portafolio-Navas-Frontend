@@ -1,6 +1,8 @@
 import {
   CloseWrapper,
   FormWrapper,
+  FromColumn,
+  ImageRow,
   Input,
   Label,
   PreviewImage,
@@ -126,7 +128,8 @@ function HeroForm() {
           </Button>
         </TooltipWithText>
       </CloseWrapper>
-
+    <ImageRow>
+    <FromColumn>
       {/* Imagen Light */}
       {imageLightPreview ? (
         <PreviewImage src={imageLightPreview} />
@@ -140,21 +143,9 @@ function HeroForm() {
         type="file"
         onChange={(e) => handleFileChange(e, setImageLight, setImageLightPreview)}
       />
+    </FromColumn>
 
-      {/* Imagen Dark */}
-      {imageDarkPreview ? (
-        <PreviewImage src={imageDarkPreview} />
-      ) : (
-        hero.image_dark && (
-          <PreviewImage src={getImageUrl(hero.image_dark)} />
-        )
-      )}
-      <Label>Fondo Oscuro</Label>
-      <Input
-        type="file"
-        onChange={(e) => handleFileChange(e, setImageDark, setImageDarkPreview)}
-      />
-
+    <FromColumn>
       {/* Imagen Mobile Light */}
       {imageMobileLightPreview ? (
         <PreviewImage src={imageMobileLightPreview} />
@@ -168,7 +159,28 @@ function HeroForm() {
         type="file"
         onChange={(e) => handleFileChange(e, setImageMobileLight, setImageMobileLightPreview)}
       />
+    </FromColumn>
+    </ImageRow>
 
+    <ImageRow>
+
+    <FromColumn>
+      {/* Imagen Dark */}
+      {imageDarkPreview ? (
+        <PreviewImage src={imageDarkPreview} />
+      ) : (
+        hero.image_dark && (
+          <PreviewImage src={getImageUrl(hero.image_dark)} />
+        )
+      )}
+      <Label>Fondo Oscuro</Label>
+      <Input
+        type="file"
+        onChange={(e) => handleFileChange(e, setImageDark, setImageDarkPreview)}
+      />
+    </FromColumn>
+
+    <FromColumn>
       {/* Imagen Mobile Dark */}
       {imageMobileDarkPreview ? (
         <PreviewImage src={imageMobileDarkPreview} />
@@ -182,7 +194,13 @@ function HeroForm() {
         type="file"
         onChange={(e) => handleFileChange(e, setImageMobileDark, setImageMobileDarkPreview)}
       />
+    </FromColumn>
+        </ImageRow>
 
+         <ImageRow>
+
+
+      <FromColumn>
       {/* Logo Light */}
       <Label>Logo para Fondo Claro</Label>
       {logoLightPreview ? (
@@ -196,7 +214,8 @@ function HeroForm() {
         type="file"
         onChange={(e) => handleFileChange(e, setLogoLight, setLogoLightPreview)}
       />
-
+      </FromColumn>
+      <FromColumn>
       {/* Logo Dark */}
       <Label>Logo Para Fondo Oscuro</Label>
       {logoDarkPreview ? (
@@ -210,6 +229,9 @@ function HeroForm() {
         type="file"
         onChange={(e) => handleFileChange(e, setLogoDark, setLogoDarkPreview)}
       />
+      </FromColumn>
+          </ImageRow>
+
 
       <Button variant="login">Guardar cambios</Button>
       <Button variant="cancel" type="button" onClick={handleClose}>Cancelar</Button>
