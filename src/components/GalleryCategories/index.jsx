@@ -35,14 +35,13 @@ function GalleryPage() {
       <Title>Gallery</Title>
       {categories.map((cat) => {
         const imageUrl = getImageUrl(cat.cover_image);
-
         return (
           <CategoryCard key={cat.id} $image={imageUrl}>
-            {imageUrl && <img src={imageUrl} alt={cat.name} />}
-            <Button to={`/gallery/${cat.slug}`} variant="portfolio">
-              {cat.name}
-            </Button>
-          </CategoryCard>
+          <Button to={`/gallery/${cat.slug}`} variant="portfolio">
+            {cat.name}
+          </Button>
+        </CategoryCard>
+
         );
       })}
     </GalleryWrapper>
