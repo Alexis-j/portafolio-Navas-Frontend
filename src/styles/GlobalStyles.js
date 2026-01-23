@@ -34,6 +34,23 @@ const GlobalStyle = createGlobalStyle`
   a:hover {
     opacity: 0.8;
   }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 400ms;
+    animation-timing-function: ease;
+  }
+
+  ::view-transition-old(root) {
+    animation-name: fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: fade-in;
+  }
+
+  @keyframes fade-out { ... }
+  @keyframes fade-in { ... }
 `;
 
 export default GlobalStyle;

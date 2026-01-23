@@ -1,9 +1,28 @@
-import { Card, CardTitle, Desc, Icon, List, Note, Price } from './styles';
+import { Card, CardTitle, Desc, Icon, List, Note, Price } from "./styles";
 
 import Button from "../ui/Button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function PriceCard({ data }) {
+  const navigate = useNavigate();
+
+  const goToContact = () => {
+    const nav = () =>
+      navigate("/contact", {
+        state: {
+          sessionType: data.category,
+          packageTitle: data.title,
+          price: `${data.currency} ${data.price}`,
+        },
+      });
+
+    if (document.startViewTransition) {
+      document.startViewTransition(nav);
+    } else {
+      nav();
+    }
+  };
+
   return (
     <Card>
       <Icon>{data.icon}</Icon>
@@ -22,20 +41,10 @@ export default function PriceCard({ data }) {
       </List>
 
       {data.note && <Note>{data.note}</Note>}
-      
-      <Button
-        as={Link}
-        to="/contact"
-        state={{
-          sessionType: data.category,   // wedding, family-Session, etc
-          packageTitle: data.title,
-          price: `${data.currency} ${data.price}`,
-        }}
-        variant="request"
-      >
-        Anfrage senden
-      </Button>
 
+      <Button variant="request" onClick={goToContact}>
+        Send Request
+      </Button>
     </Card>
   );
 }
