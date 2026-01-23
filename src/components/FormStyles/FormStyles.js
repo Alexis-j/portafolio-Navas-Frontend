@@ -5,13 +5,24 @@ export const ImageRow = styled.div`
   gap: 1rem;
   flex-wrap: wrap;
   align-items: flex-start;
-  border: 1px solid;
 `;
+
 
 export const FromColumn = styled.div`
 display: flex;
 flex-direction: column;
 gap: 1rem;
+`;
+
+export const Divider = styled.div`
+  height: 1px;
+  background: ${({ theme }) => theme.components.reviews.textBox.text};
+
+  margin: 1rem 0;
+
+  /* 🔥 Hace que llegue al borde del FormWrapper */
+  margin-left: -${({ theme }) => theme.spacing(2)};
+  margin-right: -${({ theme }) => theme.spacing(2)};
 `;
 
 

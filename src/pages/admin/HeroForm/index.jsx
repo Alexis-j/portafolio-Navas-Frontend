@@ -1,5 +1,6 @@
 import {
   CloseWrapper,
+  Divider,
   FormWrapper,
   FromColumn,
   ImageRow,
@@ -129,8 +130,9 @@ function HeroForm() {
         </TooltipWithText>
       </CloseWrapper>
     <ImageRow>
-    <FromColumn>
+      <FromColumn>
       {/* Imagen Light */}
+      <Label>Fondo Claro</Label>
       {imageLightPreview ? (
         <PreviewImage src={imageLightPreview} />
       ) : (
@@ -138,14 +140,32 @@ function HeroForm() {
           <PreviewImage src={getImageUrl(hero.image_light)} />
         )
       )}
-      <Label>Fondo Claro</Label>
       <Input
         type="file"
         onChange={(e) => handleFileChange(e, setImageLight, setImageLightPreview)}
       />
-    </FromColumn>
+      </FromColumn>
 
     <FromColumn>
+      {/* Imagen Dark */}
+      <Label>Fondo Oscuro</Label>
+      {imageDarkPreview ? (
+        <PreviewImage src={imageDarkPreview} />
+      ) : (
+        hero.image_dark && (
+          <PreviewImage src={getImageUrl(hero.image_dark)} />
+        )
+      )}
+      <Input
+        type="file"
+        onChange={(e) => handleFileChange(e, setImageDark, setImageDarkPreview)}
+      />
+    </FromColumn>
+    </ImageRow>
+    <Divider />
+    <ImageRow>
+    <FromColumn>
+      <Label>Fondo Móvil Claro</Label>
       {/* Imagen Mobile Light */}
       {imageMobileLightPreview ? (
         <PreviewImage src={imageMobileLightPreview} />
@@ -154,33 +174,14 @@ function HeroForm() {
           <PreviewImage src={getImageUrl(hero.image_mobile_light)} />
         )
       )}
-      <Label>Fondo Móvil Claro</Label>
       <Input
         type="file"
         onChange={(e) => handleFileChange(e, setImageMobileLight, setImageMobileLightPreview)}
       />
     </FromColumn>
-    </ImageRow>
-
-    <ImageRow>
 
     <FromColumn>
-      {/* Imagen Dark */}
-      {imageDarkPreview ? (
-        <PreviewImage src={imageDarkPreview} />
-      ) : (
-        hero.image_dark && (
-          <PreviewImage src={getImageUrl(hero.image_dark)} />
-        )
-      )}
-      <Label>Fondo Oscuro</Label>
-      <Input
-        type="file"
-        onChange={(e) => handleFileChange(e, setImageDark, setImageDarkPreview)}
-      />
-    </FromColumn>
-
-    <FromColumn>
+      <Label>Fondo Móvil Oscuro</Label>
       {/* Imagen Mobile Dark */}
       {imageMobileDarkPreview ? (
         <PreviewImage src={imageMobileDarkPreview} />
@@ -189,17 +190,14 @@ function HeroForm() {
           <PreviewImage src={getImageUrl(hero.image_mobile_dark)} />
         )
       )}
-      <Label>Fondo Móvil Oscuro</Label>
       <Input
         type="file"
         onChange={(e) => handleFileChange(e, setImageMobileDark, setImageMobileDarkPreview)}
       />
     </FromColumn>
-        </ImageRow>
-
-         <ImageRow>
-
-
+    </ImageRow>
+    <Divider />
+    <ImageRow>
       <FromColumn>
       {/* Logo Light */}
       <Label>Logo para Fondo Claro</Label>
@@ -230,11 +228,10 @@ function HeroForm() {
         onChange={(e) => handleFileChange(e, setLogoDark, setLogoDarkPreview)}
       />
       </FromColumn>
-          </ImageRow>
-
-
-      <Button variant="login">Guardar cambios</Button>
-      <Button variant="cancel" type="button" onClick={handleClose}>Cancelar</Button>
+    </ImageRow>
+    <Divider />
+    <Button variant="login">Guardar cambios</Button>
+    <Button variant="cancel" type="button" onClick={handleClose}>Cancelar</Button>
     </FormWrapper>
   );
 }
