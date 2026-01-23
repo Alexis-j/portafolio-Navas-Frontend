@@ -30,8 +30,8 @@ function Footer() {
               <MapPin size={20} />
             </FooterTitle>
             <FooterText>
-              Calle Ejemplo 123 <br />
-              Ciudad, País
+              Dättwil,Baden 5405 <br />
+              Swiss
             </FooterText>
           </FooterColumn>
 
@@ -41,7 +41,7 @@ function Footer() {
               <Phone size={20} />
             </FooterTitle>
             <FooterLink href="tel:+123456789">
-              +1 234 567 89
+              +41 78 406 51 20
             </FooterLink>
           </FooterColumn>
 
