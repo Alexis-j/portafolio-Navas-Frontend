@@ -55,7 +55,7 @@ export const FooterTitle = styled.h4`
 `;
 
 export const FooterText = styled.p`
-  font-size: 0.95rem;
+  font-size: ${({ theme }) => theme.fontSizes.sm};
   line-height: 1.6;
   opacity: 0.8;
   transition: opacity 0.2s ease, transform 0.2s ease;

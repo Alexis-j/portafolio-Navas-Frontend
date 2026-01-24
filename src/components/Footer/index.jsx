@@ -30,7 +30,7 @@ function Footer() {
               <MapPin size={20} />
             </FooterTitle>
             <FooterText>
-              Dättwil,Baden 5405 <br />
+              Dättwil, Baden 5405 <br />
               Swiss
             </FooterText>
           </FooterColumn>
@@ -48,7 +48,7 @@ function Footer() {
           {/* EMAIL */}
           <FooterColumn>
             <FooterTitle>
-              <Mail size={20} />
+              <Mail size={22} />
             </FooterTitle>
             <FooterLink href="mailto:andreynavas11@gmail.com">
               andreynavas11@gmail.com
