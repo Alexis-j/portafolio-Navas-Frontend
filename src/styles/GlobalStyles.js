@@ -35,22 +35,16 @@ const GlobalStyle = createGlobalStyle`
     opacity: 0.8;
   }
 
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation-duration: 400ms;
-    animation-timing-function: ease;
+    @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-
-  ::view-transition-old(root) {
-    animation-name: fade-out;
-  }
-
-  ::view-transition-new(root) {
-    animation-name: fade-in;
-  }
-
-  @keyframes fade-out { ... }
-  @keyframes fade-in { ... }
 `;
 
 export default GlobalStyle;

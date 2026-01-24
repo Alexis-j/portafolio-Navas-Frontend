@@ -3,24 +3,17 @@ import { Card, CardTitle, Desc, Icon, List, Note, Price } from "./styles";
 import Button from "../ui/Button";
 import { useNavigate } from "react-router-dom";
 
-export default function PriceCard({ data }) {
+export default function PricingCard({ data }) {
   const navigate = useNavigate();
 
   const goToContact = () => {
-    const nav = () =>
-      navigate("/contact", {
-        state: {
-          sessionType: data.category,
-          packageTitle: data.title,
-          price: `${data.currency} ${data.price}`,
-        },
-      });
-
-    if (document.startViewTransition) {
-      document.startViewTransition(nav);
-    } else {
-      nav();
-    }
+    navigate("/contact", {
+      state: {
+        sessionType: data.category,
+        packageTitle: data.title,
+        price: `${data.currency} ${data.price}`,
+      },
+    });
   };
 
   return (
