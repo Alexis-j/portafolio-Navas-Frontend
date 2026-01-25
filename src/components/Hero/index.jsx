@@ -12,17 +12,18 @@ function Hero() {
   const theme = useTheme();
 
   useEffect(() => {
-    const fetchHero = async () => {
-      try {
-        const data = await getSingle('/hero');
-        setHero(data);
-      } catch (err) {
-        console.error('Error loading hero:', err);
-      }
-    };
+  const fetchHero = async () => {
+    try {
+      const data = await getSingle('/hero');
+      setHero(data);
+    } catch (err) {
+      console.error('Error loading hero:', err);
+    }
+  };
 
-    fetchHero();
-  }, []);
+  fetchHero();
+}, []);
+
 
   if (!hero) return <p>Loading...</p>;
 
@@ -38,6 +39,10 @@ function Hero() {
   const logoSrc = theme.colors.background === '#2c2c2c'
     ? getImageUrl(hero.logo_dark)
     : getImageUrl(hero.logo_light);
+
+console.log('imgSrc:', imgSrc);
+console.log('imgMobileSrc:', imgMobileSrc);
+console.log('logoSrc:', logoSrc);
 
   return (
     <HeroWrapper
