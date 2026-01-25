@@ -1,4 +1,3 @@
-// src/pages/admin/ReviewsForm.jsx
 import {
   FormWrapper,
   Input,

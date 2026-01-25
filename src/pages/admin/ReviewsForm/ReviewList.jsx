@@ -1,4 +1,3 @@
-// src/pages/admin/ReviewsList.jsx
 import {
   PreviewImage,
   ReviewActions,

@@ -1,4 +1,3 @@
-// pages/Login/Login.jsx
 import { Card, CloseWrapper, Input, Title, Wrapper } from "./styles";
 import React, { useState } from "react";
 

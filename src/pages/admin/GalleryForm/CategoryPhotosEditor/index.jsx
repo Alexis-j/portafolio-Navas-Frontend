@@ -1,4 +1,3 @@
-// src/components/Admin/CategoryPhotosEditor/index.jsx
 import {
   ActionsOverlay,
   Button,

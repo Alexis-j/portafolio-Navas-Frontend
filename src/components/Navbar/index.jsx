@@ -1,4 +1,4 @@
-import { BurgerButton, Menu, MenuItem, NavWrapper } from './styles.jsx';
+import { BurgerButton, Menu, MenuItem, NavWrapper } from './styles';
 import React, { useEffect, useRef, useState } from 'react';
 
 function Navbar() {

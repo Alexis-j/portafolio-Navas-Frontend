@@ -1,4 +1,3 @@
-// pages/Login/styles.js
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
