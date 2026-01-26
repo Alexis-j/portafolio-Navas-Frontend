@@ -40,10 +40,6 @@ function Hero() {
     ? getImageUrl(hero.logo_dark)
     : getImageUrl(hero.logo_light);
 
-console.log('imgSrc:', imgSrc);
-console.log('imgMobileSrc:', imgMobileSrc);
-console.log('logoSrc:', logoSrc);
-
   return (
     <HeroWrapper
       $imgSrc={imgSrc}

@@ -18,14 +18,12 @@ export const MainArea = styled.div`
   gap: 24px;
 `;
 
-
 export const CoverPanel = styled.div`
   border: 1px solid #ccc;
   padding: 12px;
   border-radius: 8px;
   width: 100%;
 `;
-
 
 /* ===== COVER ===== */
 
@@ -35,7 +33,6 @@ export const CoverPhoto = styled.img`
   object-fit: contain;
   border-radius: 6px;
 `;
-
 
 /* ===== GRID ===== */
 
@@ -53,7 +50,7 @@ export const PhotoCard = styled.div`
   height: 220px;
   border-radius: 6px;
   overflow: hidden;
-  border: ${({ isCover }) => (isCover ? "3px solid green" : "1px solid #ccc")};
+  border: ${({ $isCover }) => ($isCover ? "3px solid green" : "1px solid #ccc")};
 
   img {
     width: 100%;
@@ -66,7 +63,7 @@ export const PhotoCard = styled.div`
   }
 
   &::after {
-    content: ${({ isCover }) => (isCover ? '"Portada"' : '""')};
+    content: ${({ $isCover }) => ($isCover ? '"Portada"' : '""')};
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -101,10 +98,10 @@ export const Button = styled.button`
   cursor: pointer;
   color: white;
 
-  background-color: ${({ variant }) =>
-    variant === "danger"
+  background-color: ${({ $variant }) =>
+    $variant === "danger"
       ? "#e74c3c"
-      : variant === "toggle"
+      : $variant === "toggle"
       ? "#3498db"
       : "#2ecc71"};
 `;
@@ -113,6 +110,3 @@ export const Dropdown = styled.select`
   width: 90%;
   font-size: 12px;
 `;
-
-
-

@@ -11,10 +11,10 @@ import {
   Wrapper
 } from "./styles";
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import api from "../../../../services/api";
-import { getImageUrl } from "../../../../utils/getImageUrl"; // <-- IMPORTA LA FUNCIÓN
+import { getImageUrl } from "../../../../utils/getImageUrl";
 import { useParams } from "react-router-dom";
 
 function CategoryPhotosEditor() {
@@ -25,7 +25,7 @@ function CategoryPhotosEditor() {
 
   /* ================= FETCH ================= */
 
-  const fetchEditorData = async () => {
+  const fetchEditorData = useCallback(async () => {
     const res = await api.get(
       `/gallery/categories/${categoryId}/editor`,
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
@@ -33,17 +33,17 @@ function CategoryPhotosEditor() {
 
     setCategory(res.data.category);
     setPhotos(res.data.photos);
-  };
-
-  const fetchCategories = async () => {
-    const res = await api.get("/gallery/categories");
-    setCategories(res.data.filter(c => c.id !== parseInt(categoryId)));
-  };
+  }, [categoryId]);
 
   useEffect(() => {
+    const fetchCategories = async () => {
+      const res = await api.get("/gallery/categories");
+      setCategories(res.data.filter(c => c.id !== parseInt(categoryId)));
+    };
+
     fetchEditorData();
     fetchCategories();
-  }, [categoryId]);
+  }, [categoryId, fetchEditorData]);
 
   /* ================= ACTIONS ================= */
 
@@ -142,12 +142,10 @@ function CategoryPhotosEditor() {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          isCover={photo.id === category.cover_photo_id}
+                          $isCover={photo.id === category.cover_photo_id}
                         >
-                          <img
-                            src={getImageUrl(photo.image_url)}
-                            alt=""
-                          />
+
+                          <img src={getImageUrl(photo.image_url)} alt="" />
 
                           <ActionsOverlay className="actions">
                             <Button onClick={() => makeCover(photo.id)}>
@@ -155,26 +153,27 @@ function CategoryPhotosEditor() {
                             </Button>
 
                             <Button
-                              variant="toggle"
+                              $variant="toggle"
                               onClick={() => toggleActive(photo.id)}
                             >
                               {photo.is_active ? "Desactivar" : "Activar"}
                             </Button>
 
                             <Button
-                              variant="danger"
+                              $variant="danger"
                               onClick={() => deletePhoto(photo.id)}
                             >
                               Eliminar
                             </Button>
-
+                            <label htmlFor={`category-select-${photo.id}`} className="sr-only">
+                              Asignar a otra categoría
+                            </label>
                             <Dropdown
+                              id={`category-select-${photo.id}`}
+                              name="category"
                               defaultValue=""
                               onChange={(e) =>
-                                assignToOtherCategory(
-                                  photo.id,
-                                  parseInt(e.target.value)
-                                )
+                                assignToOtherCategory(photo.id, parseInt(e.target.value))
                               }
                             >
                               <option value="" disabled>
