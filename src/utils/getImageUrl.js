@@ -1,14 +1,9 @@
-const BASE_URL = process.env.REACT_APP_API_URL;
+export const getImageUrl = (url) => {
+  if (!url) return "/default-placeholder.jpg";
 
-export const getImageUrl = (path) => {
-  if (!path) return "/default-placeholder.jpg";
+  // Si ya es una URL completa (Cloudinary)
+  if (url.startsWith("http")) return url;
 
-  const cleanPath = path.startsWith("/uploads/")
-    ? path.replace("/uploads/", "")
-    : path;
-
-  const finalUrl = `${BASE_URL}/uploads/${cleanPath}`;
-
-  return finalUrl;
-
+  // Fallback por si quedó algo viejo
+  return url;
 };
