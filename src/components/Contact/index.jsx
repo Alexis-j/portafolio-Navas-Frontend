@@ -19,13 +19,14 @@ import api from "../../services/api";
 import { buildContactMessage } from "../../utils/contactHelper";
 import { getImageUrl } from "../../utils/getImageUrl";
 import { pricingData } from "../../Data/pricingData";
+import { useData } from "../../utils/DataContext";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "styled-components";
 
 function Contact() {
   const theme = useTheme();
   const { state } = useLocation();
-  const [about, setAbout] = useState(null);
+  const { about, setAbout } = useData();
   const categoryOptions = Array.from(new Set(pricingData.map(pkg => pkg.category)));
   const [form, setForm] = useState({
     name: "",
@@ -55,18 +56,22 @@ function Contact() {
     }
   }, [state]);
 
+
   useEffect(() => {
-    const fetchAbout = async () => {
-      try {
-        const res = await api.get("/about");
-        const data = Array.isArray(res.data) ? res.data[0] : res.data;
-        setAbout(data);
-      } catch (err) {
-        console.error("Error loading About:", err);
-      }
-    };
-    fetchAbout();
-  }, []);
+    if (!about) {
+      const fetchAbout = async () => {
+        try {
+          const res = await api.get("/about");
+          const data = Array.isArray(res.data) ? res.data[0] : res.data;
+          setAbout(data);
+        } catch (err) {
+          console.error("Error al cargar About:", err);
+        }
+      };
+
+      fetchAbout();
+    }
+  }, [about, setAbout]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

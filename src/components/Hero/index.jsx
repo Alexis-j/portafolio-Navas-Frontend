@@ -1,29 +1,31 @@
 import { Content, HeroWrapper, Logo } from './styles';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import Button from "../ui/Button";
 import { NavLink } from "react-router-dom";
 import { getImageUrl } from '../../utils/getImageUrl';
 import { getSingle } from '../../services/api';
+import { useData } from "../../utils/DataContext";
 import { useTheme } from 'styled-components';
 
 function Hero() {
-  const [hero, setHero] = useState(null);
+  const { hero, setHero } = useData();
   const theme = useTheme();
 
   useEffect(() => {
-  const fetchHero = async () => {
-    try {
-      const data = await getSingle('/hero');
-      setHero(data);
-    } catch (err) {
-      console.error('Error loading hero:', err);
-    }
-  };
+    if (hero) return; // 👈 LA CLAVE
 
-  fetchHero();
-}, []);
+    const fetchHero = async () => {
+      try {
+        const data = await getSingle("/hero");
+        setHero(data);
+      } catch (err) {
+        console.error("Error loading hero:", err);
+      }
+    };
 
+    fetchHero();
+  }, [hero, setHero]);
 
   if (!hero) return <p>Loading...</p>;
 

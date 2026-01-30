@@ -15,39 +15,36 @@ import {
   SlideWrapper,
   TextBox
 } from "./styles";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Title from "../ui/Title";
 import api from "../../services/api";
 import { getImageUrl } from "../../utils/getImageUrl";
+import { useData } from "../../utils/DataContext";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 function Reviews() {
-  const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { reviews, setReviews } = useData();
+  const isDesktop = useMediaQuery("(min-width: 769px)");
 
   useEffect(() => {
+    if (reviews) return;
+
     const fetchReviews = async () => {
       try {
         const res = await api.get("/reviews");
-
         const data = Array.isArray(res.data) ? res.data : [res.data];
         setReviews(data);
       } catch (err) {
         console.error("Error loading reviews:", err);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchReviews();
-  }, []);
+  }, [reviews, setReviews]);
 
-  const isDesktop = useMediaQuery("(min-width: 769px)");
-
-
-  if (loading) return <p>Cargando reseñas...</p>;
+  if (!reviews) return <p>Cargando reseñas...</p>;
   if (reviews.length === 0) return <p>No hay reseñas disponibles.</p>;
 
   return (
@@ -67,9 +64,8 @@ function Reviews() {
       >
         {reviews.map((r, index) => {
           const layout = index % 6;
-
-          // ✅ Versión segura: comprobamos que sea string antes de usar startsWith
-          const isValidLink = typeof r.link === "string" && r.link.startsWith("http");
+          const isValidLink =
+            typeof r.link === "string" && r.link.startsWith("http");
 
           return (
             <SwiperSlide key={r.id}>
@@ -84,6 +80,7 @@ function Reviews() {
                 <TextBox $layout={layout}>
                   <ClientText>{r.review_text}</ClientText>
                   <Divider />
+
                   {isValidLink ? (
                     <ClientLink
                       href={r.link}
