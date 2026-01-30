@@ -90,6 +90,8 @@ export const SocialRow = styled.div`
   a {
     display: inline-flex;
     transition: transform 0.25s ease, color 0.25s ease;
+    color: ${({ theme }) => theme.colors.text};
+    opacity: 0.8;
   }
 
   a:hover {
@@ -101,7 +103,8 @@ export const FooterBottom = styled.div`
   width: 100%;
   padding: 1rem 0;
   text-align: center;
+  color: ${({ theme }) => theme.colors.text};
+  opacity: 0.8;
   font-size: ${({ theme }) => theme.fontSizes.sm};
-  opacity: 0.7;
   border-top: 1px solid ${({ theme }) => theme.colors.border}30;
 `;
