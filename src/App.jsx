@@ -24,6 +24,7 @@ import PublicLayout from './components/PublicLayout';
 import ResetPassword from "./pages/admin/ResetPassword";
 import ReviewsForm from './pages/admin/ReviewsForm';
 import ReviewsList from './pages/admin/ReviewsForm/ReviewList';
+import ScrollToTop from './utils/ScrollToTop';
 import { ThemeProvider } from 'styled-components';
 import ToggleThemeButton from './components/ui/ThemeToggle';
 
@@ -32,11 +33,13 @@ function App() {
   const toggleTheme = () => setIsDark(prev => !prev);
 
   return (
+
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <BrowserRouter>
         <GlobalStyle />
         <ToggleThemeButton toggleTheme={toggleTheme} isDark={isDark} />
 
+        <ScrollToTop />
         <Routes>
           {/* 1️⃣ Ruta pública */}
           <Route path="/" element={

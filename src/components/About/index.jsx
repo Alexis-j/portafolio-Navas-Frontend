@@ -6,30 +6,33 @@ import {
   RightSide,
   Title
 } from "./styles";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import Reviews from "../Reviews";
 import api from "../../services/api";
 import { getImageUrl } from "../../utils/getImageUrl";
+import { useData } from "../../utils/DataContext";
 import { useTheme } from "styled-components";
 
 function About() {
-  const [about, setAbout] = useState(null);
+  const { about, setAbout } = useData();
   const theme = useTheme();
 
   useEffect(() => {
-    const fetchAbout = async () => {
-      try {
-        const res = await api.get("/about");
-        // Siempre usar el primer elemento si viene en un array
-        const data = Array.isArray(res.data) ? res.data[0] : res.data;
-        setAbout(data);
-      } catch (err) {
-        console.error("Error al cargar About:", err);
-      }
-    };
-    fetchAbout();
-  }, []);
+    if (!about) {
+      const fetchAbout = async () => {
+        try {
+          const res = await api.get("/about");
+          const data = Array.isArray(res.data) ? res.data[0] : res.data;
+          setAbout(data);
+        } catch (err) {
+          console.error("Error al cargar About:", err);
+        }
+      };
+
+      fetchAbout();
+    }
+  }, [about, setAbout]);
 
   if (!about) return <p>Cargando...</p>;
 
@@ -50,6 +53,7 @@ function About() {
           <Photo src={imgSrc} alt="About" />
         </RightSide>
       </AboutWrapper>
+
       <Reviews />
     </>
   );
