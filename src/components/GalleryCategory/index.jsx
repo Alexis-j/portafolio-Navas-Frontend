@@ -22,6 +22,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Title from "../ui/Title";
 import api from "../../services/api";
 import { getImageUrl } from "../../utils/getImageUrl";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useParams } from "react-router-dom";
 
 function CategoryPage() {
@@ -33,10 +34,10 @@ function CategoryPage() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(window.matchMedia("(min-width: 769px)").matches);
   const [loading, setLoading] = useState(true);
 
   const lightboxRef = useRef(null);
+  const isDesktop = useMediaQuery("(min-width: 769px)");
 
   // HOOK: fetch photos
   useEffect(() => {
@@ -52,14 +53,6 @@ function CategoryPage() {
     };
     fetchPhotos();
   }, [slug]);
-
-  // HOOK: detect desktop / mobile
-  useEffect(() => {
-    const media = window.matchMedia("(min-width: 769px)");
-    const handler = () => setIsDesktop(media.matches);
-    media.addEventListener("change", handler);
-    return () => media.removeEventListener("change", handler);
-  }, []);
 
   // HOOK: ESC para cerrar lightbox
   useEffect(() => {

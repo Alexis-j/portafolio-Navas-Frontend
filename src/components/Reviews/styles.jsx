@@ -7,6 +7,7 @@ export const ReviewsWrapper = styled.section`
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
 
+
   /* Bullets */
   .swiper-pagination-bullet {
     background: ${({ theme }) => theme.colors.accent} !important;
@@ -14,6 +15,8 @@ export const ReviewsWrapper = styled.section`
     width: 10px;
     height: 10px;
   }
+
+
 
   .swiper-pagination-bullet-active {
     background: ${({ theme }) => theme.colors.bulletsActives} !important;
@@ -31,6 +34,13 @@ export const ReviewsWrapper = styled.section`
   .swiper-button-prev::after {
     font-size: 1.5rem;
   }
+
+  @media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
 `;
 
 export const SlideWrapper = styled.div`

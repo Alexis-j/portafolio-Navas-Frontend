@@ -21,6 +21,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Title from "../ui/Title";
 import api from "../../services/api";
 import { getImageUrl } from "../../utils/getImageUrl";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -31,7 +32,6 @@ function Reviews() {
       try {
         const res = await api.get("/reviews");
 
-        // Asegurarnos de que siempre sea un array
         const data = Array.isArray(res.data) ? res.data : [res.data];
         setReviews(data);
       } catch (err) {
@@ -44,6 +44,9 @@ function Reviews() {
     fetchReviews();
   }, []);
 
+  const isDesktop = useMediaQuery("(min-width: 769px)");
+
+
   if (loading) return <p>Cargando reseñas...</p>;
   if (reviews.length === 0) return <p>No hay reseñas disponibles.</p>;
 
@@ -53,13 +56,14 @@ function Reviews() {
 
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
-        effect="fade"
         fadeEffect={{ crossFade: true }}
         autoplay={{ delay: 4500, disableOnInteraction: false }}
+        effect={isDesktop ? "fade" : "slide"}
         loop
         navigation
         pagination={{ clickable: true }}
         slidesPerView={1}
+        autoHeight
       >
         {reviews.map((r, index) => {
           const layout = index % 6;
