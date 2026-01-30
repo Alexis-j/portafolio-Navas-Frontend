@@ -28,7 +28,7 @@ export default function PricingSection() {
           to={`/pricing/${category}`}
           variant="more"
         >
-          Mehr erfahren
+          Learn more
         </Button>
       </InfoBox>
     </CategoryCard>
