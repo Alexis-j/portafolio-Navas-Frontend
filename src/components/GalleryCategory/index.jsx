@@ -22,13 +22,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Title from "../ui/Title";
 import api from "../../services/api";
 import { getImageUrl } from "../../utils/getImageUrl";
+import { useData } from "../../utils/DataContext";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useParams } from "react-router-dom";
 
 function CategoryPage() {
   const { slug } = useParams();
+  const { galleryPhotos, setGalleryPhotos } = useData();
 
-  // STATES
   const [photos, setPhotos] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -39,36 +40,44 @@ function CategoryPage() {
   const lightboxRef = useRef(null);
   const isDesktop = useMediaQuery("(min-width: 769px)");
 
-  // HOOK: fetch photos
+  // Fetch fotos por slug y cache en Context + sessionStorage
   useEffect(() => {
+    if (galleryPhotos[slug]) {
+      setPhotos(galleryPhotos[slug]);
+      setLoading(false);
+      return;
+    }
+
     const fetchPhotos = async () => {
       try {
         const res = await api.get(`/gallery/categories/${slug}/photos`);
-        setPhotos(Array.isArray(res.data) ? res.data : []);
+        const data = Array.isArray(res.data) ? res.data : [];
+        setPhotos(data);
+        setGalleryPhotos(prev => ({ ...prev, [slug]: data }));
       } catch (err) {
         console.error("Error al cargar fotos:", err);
+        setPhotos([]);
       } finally {
         setLoading(false);
       }
     };
-    fetchPhotos();
-  }, [slug]);
 
-  // HOOK: ESC para cerrar lightbox
+    fetchPhotos();
+  }, [slug, galleryPhotos, setGalleryPhotos]);
+
+  // Eventos del lightbox
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && closeLightbox();
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   });
 
-  // HOOK: fullscreen change
   useEffect(() => {
     const onFullscreenChange = () => setIsFullscreen(!!document.fullscreenElement);
     document.addEventListener("fullscreenchange", onFullscreenChange);
     return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
   }, []);
 
-  // FUNCIONES LIGHTBOX
   const openLightbox = (index) => {
     setActiveIndex(index);
     setIsMounted(true);
@@ -92,11 +101,10 @@ function CategoryPage() {
     }
   };
 
-  // Crear bloques de 5 fotos
+  // Bloques de 5 fotos
   const blocks = [];
   for (let i = 0; i < photos.length; i += 5) blocks.push(photos.slice(i, i + 5));
 
-  // RETURNS condicionales
   if (loading) return <p>Cargando fotos...</p>;
   if (photos.length === 0) return <p>No hay fotos disponibles</p>;
 
