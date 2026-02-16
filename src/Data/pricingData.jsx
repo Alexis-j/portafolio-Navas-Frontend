@@ -58,10 +58,9 @@ export const pricingData = [
     currency: "CHF",
     description: "Family session",
     features: [
-      "8 hours of coverage",
       "Ceremony + family session",
       "High-resolution edited photos",
-      "Digital gallery (USB)",
+      "Digital Gallery",
       "Delivery within 2 weeks"
     ]
   },
@@ -74,11 +73,10 @@ export const pricingData = [
     currency: "CHF",
     description: "Family session",
     features: [
-      "12 hours of coverage",
       "Preparations + ceremony + reception",
       "1 pre-session or post-session",
       "300+ edited photos",
-      "USB gallery"
+      "Digital Gallery",
     ],
     note: "Each additional 30 minutes: CHF 50"
   },
@@ -92,12 +90,12 @@ export const pricingData = [
     highlight: true,
     description: "Family session",
     features: [
-      "24 hours of coverage",
       "Full event + guests + details",
       "Professional printed photo album",
       "Pre-session included",
       "Priority delivery",
-      "Videographer included"
+      "Videographer included",
+      "Digital Gallery",
     ]
   },
    {
