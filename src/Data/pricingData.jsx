@@ -4,7 +4,7 @@ export const pricingData = [
     category: "wedding",
     icon: "💍",
     title: "Essential Wedding",
-    price: 900,
+    price: 1900,
     currency: "CHF",
     features: [
       "8 hours of coverage",
@@ -20,7 +20,7 @@ export const pricingData = [
     category: "wedding",
     icon: "💍",
     title: "Complete Wedding",
-    price: 2500,
+    price: 2800,
     currency: "CHF",
     features: [
       "12 hours (2 days or full wedding coverage)",
@@ -36,7 +36,7 @@ export const pricingData = [
     category: "wedding",
     icon: "💍",
     title: "Premium Wedding",
-    price: 4500,
+    price: 5000,
     currency: "CHF",
     highlight: true,
     features: [
@@ -53,7 +53,7 @@ export const pricingData = [
     category: "family-Session",
     icon: "👨‍👩‍👧‍👦",
     title: "Essential Family Session",
-    price: 900,
+    price: 950,
     currency: "CHF",
     description: "Family session",
     features: [
@@ -69,7 +69,7 @@ export const pricingData = [
     category: "family-Session",
     icon: "👨‍👩‍👧‍👦",
     title: "Complete Family Session",
-    price: 2500,
+    price: 1800,
     currency: "CHF",
     description: "Family session",
     features: [
@@ -170,7 +170,7 @@ export const pricingData = [
     category: "brand",
     icon: "📸",
     title: "Brand Pro",
-    price: 850,
+    price: 1200,
     currency: "CHF",
     description: "Professional brand content",
     features: [
@@ -227,5 +227,4 @@ export const pricingData = [
     "Priority delivery"
   ]
 }
-
 ];
