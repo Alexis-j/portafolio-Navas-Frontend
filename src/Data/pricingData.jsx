@@ -8,10 +8,10 @@ export const pricingData = [
     currency: "CHF",
     features: [
       "8 hours of coverage",
-      "Ceremony + couple session",
+      "Ceremony, Apero + couple session",
       "High-resolution edited photos",
-      "Digital gallery (USB)",
-      "Delivery within 2 weeks",
+      "Digital Gallery",
+      "Delivery within 5-7 Day",
     ],
     note: " ",
   },
@@ -27,7 +27,7 @@ export const pricingData = [
       "Preparations + ceremony + reception",
       "1 pre-wedding or post-wedding session",
       "300+ edited photos",
-      "USB gallery"
+      "Digital Gallery",
     ],
     note: "Each additional 30 minutes: CHF 50"
   },
@@ -40,11 +40,12 @@ export const pricingData = [
     currency: "CHF",
     highlight: true,
     features: [
-      "24 hours of coverage",
+      "no time limit",
       "Full event + guests + details",
       "Professional printed photo album",
       "Pre-wedding session included",
       "Priority delivery",
+      "Digital Gallery",
     ],
     note: "Videographer included"
   },
