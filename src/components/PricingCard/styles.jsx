@@ -23,6 +23,7 @@ export const Icon = styled.div`
 
 export const CardTitle = styled.h3`
   margin: 12px 0;
+  white-space: pre-line;
   color: ${({ theme }) => theme.colors.cardTittle};
 `;
 
@@ -55,4 +56,3 @@ export const Note = styled.p`
   font-size: 16px;
   color: ${({ theme }) => theme.colors.cardTittle};
 `;
-

@@ -1,14 +1,20 @@
 import { Grid, Wrapper } from "./styles";
 
 import PriceCard from "../PricingCard";
-import Title from "../ui/Title"
+import Title from "../ui/Title";
 import { pricingData } from "../../Data/pricingData";
 import { useParams } from "react-router-dom";
 
 export default function CategoryPricing() {
   const { category } = useParams();
-  const categoryData = pricingData.filter(pkg => pkg.category === category);
-    const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
+  // Filtra paquetes que coinciden con la categoría o que tienen categories (paquetes universales)
+  const categoryData = pricingData.filter(
+    (pkg) =>
+      pkg.category === category || pkg.categories?.includes(category)
+  );
+
+  const capitalize = (str) => str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
 
   if (!categoryData.length) return <p>No plans found</p>;
 
@@ -16,7 +22,7 @@ export default function CategoryPricing() {
     <Wrapper>
       <Title>{capitalize(category.replace("-", " "))}</Title>
       <Grid>
-        {categoryData.map(pkg => (
+        {categoryData.map((pkg) => (
           <PriceCard key={pkg.id} data={pkg} />
         ))}
       </Grid>
