@@ -266,19 +266,19 @@ export const pricingData = [
   },
 
   // UNIVERSAL CEREMONY PACKAGE
-  // {
-  //   id: "ceremony-package",
-  //   categories: ["wedding", "couple-session", "family-session"],
-  //   icon: "📸",
-  //   title: "Ceremony Package",
-  //   price: 1000,
-  //   currency: "CHF",
-  //   description: "Available for selected session types",
-  //   features: [
-  //     "4–6 hours",
-  //     "Ceremony + Couple Session",
-  //     "Digital Gallery",
-  //     "Delivered within 5 days",
-  //   ],
-  // },
+  {
+    id: "ceremony-package",
+    categories: "wedding",
+    icon: "📸",
+    title: "Ceremony Package",
+    price: 1000,
+    currency: "CHF",
+    description: "Available for selected session types",
+    features: [
+      "4–6 hours",
+      "Ceremony + Couple Session",
+      "Digital Gallery",
+      "Delivered within 5 days",
+    ],
+  },
 ];
