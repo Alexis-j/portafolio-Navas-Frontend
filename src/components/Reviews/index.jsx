@@ -77,7 +77,7 @@ function Reviews() {
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         fadeEffect={{ crossFade: true }}
-        autoplay={{ delay: 18000, disableOnInteraction: false }}
+        autoplay={{ delay: 12000, disableOnInteraction: false }}
         effect={isDesktop ? "fade" : "slide"}
         loop
         navigation
